@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      #wat {
+        color: black;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 20%;
+        text-align: center;
+        margin-top: 5%;
+        font-size: 70px;
+      }
+
+      #startButton,
+      #stopButton {
+        display: inline-block;
+        margin: 5px;
+        font-size: 40px;
+        margin-top: 10%;
+      }
+
+      .button {
+        margin: auto;
+        text-align: center;
+      }
+
+      .main {
+        background-color: whitesmoke;
+        width: 100%;
+        margin: auto;
+        margin-top: 10px;
+        border: 3px solid paleturquoise;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="button">
+        <button onclick="Click()" id="startButton">Start</button>
+        <button onclick="Clear()" id="stopButton">Stop</button>
+      </div>
+      <h1 id="wat">WAT</h1>
+
+      <audio id="uniqueSound" src="alert.mp3">play sound</audio>
+    </div>
+    <script>
+      const wat = [
+        "power",
+        "money",
+        "intelligence",
+        "politics",
+        "defence",
+        "comment",
+        "intelligence",
+      ];
+      let interval;
+      var i;
+      var n;
+      var count = 3;
+      function firstStep() {
+        i = prompt("enter starting number");
+        n = prompt("enter last number");
+      }
+
+      firstStep();
+
+      function Click() {
+        firstInterval = setInterval(() => {
+          if (count > 0) {
+            document.getElementById("wat").innerHTML = count;
+            count--;
+          } else if(count==0) {
+            clearInterval(firstInterval);
+            document.getElementById("uniqueSound").play();
+            document.getElementById("wat").innerHTML = wat[i-1]; 
+            i++;
+            interval = setInterval(() => {
+            if (i < n) {
+              document.getElementById("wat").innerHTML = wat[i];
+              document.getElementById("uniqueSound").play();
+              i++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 5000);
+            }
+            else{
+             console.log("this is me");
+          
+        }
+
+          
+        },1000);
+    }
+
+      function Clear() {
+        clearInterval(interval);
+      }
+    </script>
+  </body>
+</html>
